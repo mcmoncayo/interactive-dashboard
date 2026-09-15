@@ -9,7 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     
     <link rel="stylesheet" href="css/style.css">
-    <script defer src="js/script.js"></script>
+ 
 
     <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </head>
@@ -27,6 +27,28 @@
 
     <div class="container">
     <div class="row">
+        <div class="col" id="weekly-tasks">
+
+            <script src="js/task-manager.js"></script>            
+            
+            <form id="goal-form">
+
+                <label for="user-name">Name:</label>
+                <input type="text" id="user-name">
+
+                <label for="daily-goal">Daily Task Goal:</label>
+                <input type="number" id="daily-goal">
+
+                <label for="bonus-tasks">Weekly Bonus Tasks:</label>
+                <input type="number" id="bonus-tasks">
+
+                <button type="submit" id="goal-btn">Calculate Goal</button>
+            </form>
+
+            <p id="goal-message"></p>
+            
+        </div>
+        </div>
         <!-- Dashboard Content -->
     </div>
 </div>
