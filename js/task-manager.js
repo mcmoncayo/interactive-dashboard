@@ -6,7 +6,7 @@ function weeklyGoal(userName, dailyGoal, bonusTasks) {
     let weeklyGoal = dailyGoal * 5;
 
     // Calculate weekly goal with bonus tasks
-    let totalGoal = weeklyGoal + bonusTasks;
+    let totalGoal = weeklyGoal + Number(bonusTasks);
 
     // Create message to display
     let output = "User:" + userName + "<br>" + "Total Weekly Goal:" + totalGoal;
