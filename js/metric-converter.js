@@ -16,7 +16,7 @@ output = document.getElementById("conversion-result");
 convertButton.addEventListener("click", function(event) {
 
     event.preventDefault();
-    
+
     let inputValue = parseFloat(numericValue.value);
 
     for (let i = 0; i < conversionOptions.length; i++) {
@@ -67,6 +67,6 @@ convertButton.addEventListener("click", function(event) {
 
     }
 
-    output.innerHTML = result.toFixed(2)
+    output.innerHTML = result.toFixed(2);
 
 });
