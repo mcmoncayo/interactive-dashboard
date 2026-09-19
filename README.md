@@ -8,7 +8,11 @@ This project is a web-based dashboard built for WEB-115 to demonstrate interacti
 ## Weekly Task Goal
 Created a task goal calculator that allows users to write their name, daily task goal, and weekly bonus tasks. Multiplies daily goal by 5 workdays + bonus tasks
 
-## Pseudocode
+## Imperial/Metric Converter
+
+The Imperial/Metric Converter is a web application that allows users to convert measurements between Imperial and Metric units. The application supports conversions between inches, feet, yards, miles, centimeters, meters, and kilometers.
+
+### Logic and Pseudocode
 BEGIN
 
     INPUT numeric value
