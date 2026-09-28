@@ -17,6 +17,8 @@
   border-radius: 50%;
   text-wrap: wrap;
   display: none;
+  /* get answer inside ball */
+  overflow: hidden
 }
 
 
