@@ -1,4 +1,4 @@
-// Calculate user's weekly goal
+// Calculate users weekly goal
 function weeklyGoal(userName, dailyGoal, bonusTasks) {
 
     // Calculate weekly goal with 5 workdays
