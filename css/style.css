@@ -4,6 +4,7 @@ body {
 
 h1 {
     font-family: Garamond, serif;
+    text-align: center;
 }
 
 #weekly-tasks {
