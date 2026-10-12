@@ -1,8 +1,10 @@
 
 #magic-eight-ball {
-  max-width: 410px;
+  max-width: 100%;
   text-align: center;
-  margin: auto;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 20px;
 }
 
 #circle {
