@@ -8,6 +8,7 @@ h1 {
 
 #weekly-tasks {
     margin: 20px;
+    padding: 20px;
     border: 1px solid #ddd;
 }
 
@@ -16,6 +17,7 @@ h1 {
     padding: 10px;
     border: 1px solid #ccc;
     background-color: #f9f9f9;
+    margin-bottom: 10px;
 }
 
 #goal-form label {
@@ -38,6 +40,7 @@ h1 {
 }
 
 #metric-converter {
+    margin: 20px;
     padding: 20px;
 }
 
