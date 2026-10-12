@@ -4,17 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Interactive Dashboard</title>
-    
-    <!-- Bootstrap  -->
+
+    <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    
+
     <link rel="stylesheet" href="css/style.css">
- 
+
+    <link rel="stylesheet" href="css/magic-eight-ball.css">
 
     <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </head>
-
 <body>
+
     <h1>My Interactive Dashboard</h1>
     <p>This dashboard was created by Maria for the Web-115 course at Wake Tech</p>
 
@@ -22,33 +23,54 @@
         document.write("This dashboard demonstrates how JavaScript can be used to create interactive websites.")
     </script>
 
-<!-- The <noscript> is for web browsers with JavaScript rendering disabled. -->
+    <!-- The noscript element is for browsers with JavaScript disabled. -->
     <noscript>Unfortunately, your web browser does not support JavaScript.</noscript>
 
     <div class="container">
-    <div class="row">
-        <div class="col" id="weekly-tasks">            
-            
-            <form id="goal-form">
 
-                <label for="user-name">Name:</label>
-                <input type="text" id="user-name">
+        <div class="row">
 
-                <label for="daily-goal">Daily Task Goal:</label>
-                <input type="number" id="daily-goal">
+            <!-- Weekly Tasks -->
+            <div class="col" id="weekly-tasks">
 
-                <label for="bonus-tasks">Weekly Bonus Tasks:</label>
-                <input type="number" id="bonus-tasks">
+                <form id="goal-form">
 
-                <button type="submit" id="goal-btn">Calculate Goal</button>
-            </form>
+                    <label for="user-name">Name:</label>
+                    <input type="text" id="user-name">
 
-            <p id="goal-message"></p>
-            
-            <script src="js/task-manager.js"></script> 
- 
+                    <label for="daily-goal">Daily Task Goal:</label>
+                    <input type="number" id="daily-goal">
+
+                    <label for="bonus-tasks">Weekly Bonus Tasks:</label>
+                    <input type="number" id="bonus-tasks">
+
+                    <button type="submit" id="goal-btn">Calculate Goal</button>
+
+                </form>
+
+                <p id="goal-message"></p>
+
+                <!-- New Weekly Task List -->
+                <div id="task-list">
+
+                    <h3>Weekly Task List</h3>
+
+                    <p>Enter a task below to manage your goals.</p>
+
+                    <form id="task-form">
+                        <label for="task-name">Enter task:</label>
+                        <input type="text" id="task-name">
+
+                        <button type="button" id="add-task">Add Task</button>
+                    </form>
+
+                </div>
+
+                <script src="js/task-manager.js" defer></script>
+
             </div>
 
+            <!-- Metric Converter -->
             <div class="col" id="metric-converter">
 
                 <form id="converter-form">
@@ -57,6 +79,7 @@
                     <input type="number" id="numeric-value">
 
                     <label for="conversion-type">Select conversion:</label>
+
                     <select id="conversion-type">
                         <option value="inch to centimeter">Inch to Centimeter</option>
                         <option value="foot to centimeter">Foot to Centimeter</option>
@@ -78,29 +101,41 @@
 
             </div>
 
+            <!-- Magic Eight Ball -->
             <div class="col" id="magic-eight-ball">
-                <script src="js/magic-eight-ball.js" defer></script>﻿
-                <link rel="stylesheet" href="css/magic-eight-ball.css">
+
+                <script src="js/magic-eight-ball.js" defer></script>
+
                 <h2 class="heading">Magic Eight Ball</h2>
+
                 <form>
+
                     <p>Type a yes/no question below, then click on the Eight Ball below to get your answer!</p>
+
                     <input id="question" name="question" size="80">
 
                     <div id="magicEightBall">
+
                         <div id="circle"></div>
-                        <img id="ball" src="img/magic-eight-ball.png"/>
+
+                        <img id="ball" src="img/magic-eight-ball.png" alt="Magic Eight Ball">
+
                     </div>
 
                     <button id="reset" name="reset" type="reset">Ask another question</button>
+
                 </form>
+
                 <br>
+
             </div>
 
         </div>
+
         <!-- Dashboard Content -->
-         
+
     </div>
-</div>
 
 </body>
 </html>
+
