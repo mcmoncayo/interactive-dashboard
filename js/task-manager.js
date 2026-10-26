@@ -31,43 +31,197 @@ document.getElementById("goal-btn").addEventListener("click", function(event) {
 
 // Task Manager stuff
 
-// Store tasks entered by the user
+// Store tasks in an array of objects
 let myTasks = [];
+let nextTaskId = 1;
 
-// Create unordered list for tasks
-let taskList = document.createElement("ul");
+// Get the task list container
+let taskList = document.getElementById("task-list");
 
-// Give the list ID
-taskList.id = "user-tasks";
+// Function to display tasks
+function displayTasks() {
 
-// Add the list to the task list container
-document.getElementById("task-list").appendChild(taskList);
+    // Clear the current task display
+    taskList.innerHTML = "";
 
-// Add a task when button is clicked
-document.getElementById("add-task").addEventListener("click", function() {
+    // Create an unordered list
+    let taskItems = document.createElement("ul");
 
-    // Get the task entered by user
-    let taskName = document.getElementById("task-name").value;
+    myTasks.forEach(function(task) {
 
-    // Check that the input is not empty
-    if (taskName.trim() !== "") {
-
-        // Store the task in the array
-        myTasks.push(taskName);
-
-        // Create a new list item
+        // Create a list item and task text
         let listItem = document.createElement("li");
+        let taskText = document.createElement("span");
 
-        // Add the task text to the list item
-        listItem.textContent = taskName;
+        taskText.textContent = task.name + " - " + task.priority;
 
-        // Add the list item to the unordered list
-        taskList.appendChild(listItem);
+        // Highlight important tasks in red
+        if (task.isImportant) {
+            listItem.style.color = "red";
+        }
 
-        // Clear the input field
+        // Apply strikethrough to completed tasks
+        if (task.isCompleted) {
+            taskText.style.textDecoration = "line-through";
+        }
+
+        // Apply styling based on priority
+        if (task.priority === "High") {
+            listItem.style.borderLeft = "5px solid red";
+        } else if (task.priority === "Medium") {
+            listItem.style.borderLeft = "5px solid orange";
+        } else {
+            listItem.style.borderLeft = "5px solid green";
+        }
+
+        // Create the complete button
+        let completeButton = document.createElement("button");
+        completeButton.textContent = task.isCompleted
+            ? "Mark Incomplete"
+            : "Complete";
+        completeButton.type = "button";
+
+        completeButton.addEventListener("click", function() {
+            toggleComplete(task.id);
+        });
+
+        // Create the edit button
+        let editButton = document.createElement("button");
+        editButton.textContent = "Edit";
+        editButton.type = "button";
+
+        editButton.addEventListener("click", function() {
+            editTask(task.id);
+        });
+
+        // Create the delete button
+        let deleteButton = document.createElement("button");
+        deleteButton.textContent = "Delete";
+        deleteButton.type = "button";
+
+        deleteButton.addEventListener("click", function() {
+            deleteTask(task.id);
+        });
+
+        // Add elements to the list item
+        listItem.appendChild(taskText);
+        listItem.appendChild(completeButton);
+        listItem.appendChild(editButton);
+        listItem.appendChild(deleteButton);
+
+        // Add the task to the unordered list
+        taskItems.appendChild(listItem);
+    });
+
+    // Add the list to the webpage
+    taskList.appendChild(taskItems);
+}
+
+// Function to add a task
+function addTask(name, priority, isImportant) {
+
+    let newTask = {
+        id: nextTaskId++,
+        name: name,
+        priority: priority,
+        isImportant: isImportant,
+        isCompleted: false
+    };
+
+    myTasks.push(newTask);
+
+    displayTasks();
+
+    // Log the full task list
+    console.log(JSON.stringify(myTasks));
+}
+
+// Add a task when the form is submitted
+document.getElementById("task-form").addEventListener("submit", function(event) {
+
+    // Prevent the page from refreshing
+    event.preventDefault();
+
+    let taskName = document.getElementById("task-name").value.trim();
+    let priority = document.getElementById("task-priority").value;
+    let isImportant = document.getElementById("task-important").checked;
+
+    // Check that the task name is not empty
+    if (taskName !== "") {
+        addTask(taskName, priority, isImportant);
+
+        // Clear the task name and checkbox
         document.getElementById("task-name").value = "";
-
-    } else {
-        alert("Please enter a task.");
+        document.getElementById("task-important").checked = false;
+        document.getElementById("task-priority").value = "Medium";
     }
+});
+
+// Function to mark a task complete or incomplete
+function toggleComplete(id) {
+
+    let task = myTasks.find(function(task) {
+        return task.id === id;
+    });
+
+    if (task) {
+        task.isCompleted = !task.isCompleted;
+
+        displayTasks();
+
+        console.log(JSON.stringify(myTasks));
+    }
+}
+
+// Function to edit a task
+function editTask(id) {
+
+    let task = myTasks.find(function(task) {
+        return task.id === id;
+    });
+
+    if (task) {
+        let updatedName = prompt("Edit task name:", task.name);
+
+        if (updatedName === null) {
+            return;
+        }
+
+        if (updatedName.trim() !== "") {
+            task.name = updatedName.trim();
+
+            displayTasks();
+
+            console.log(JSON.stringify(myTasks));
+        } else {
+            alert("Task name cannot be empty.");
+        }
+    }
+}
+
+// Function to delete one task
+function deleteTask(id) {
+
+    myTasks = myTasks.filter(function(task) {
+        return task.id !== id;
+    });
+
+    displayTasks();
+
+    console.log(JSON.stringify(myTasks));
+}
+
+// Function to delete the entire task list
+function deleteTaskList() {
+
+    myTasks = [];
+
+    displayTasks();
+
+    console.log(JSON.stringify(myTasks));
+}
+
+// Run the delete list function when button is clicked
+document.getElementById("delete-list").addEventListener("click", function() {
+    deleteTaskList();
 });
