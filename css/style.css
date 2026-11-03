@@ -108,3 +108,24 @@ h1 {
     background-color: #f2dede;
     border: 1px solid #cc9999;
 }
+
+/* Digital clock */
+#digital-clock {
+    background-color: #ffffff;
+    color: #333333;
+    text-align: center;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 10px;
+}
+
+#clock-face {
+    font-size: 32px;
+    font-weight: bold;
+    color: #3d5945;
+}
+
+#calendar-date {
+    font-size: 18px;
+    color: #555555;
+}
